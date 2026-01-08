@@ -1,0 +1,17 @@
+src/app/api/reception/route.ts(43,17): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Type '({ date }: { date: string; }) => Promise<{ availableSlots: string[]; date: string; success: boolean; error?: undefined; } | { availableSlots: never[]; date: string; success: boolean; error: any; } | { error: string; availableSlots: never[]; date: string; }>' is not assignable to type 'undefined'.
+src/app/api/reception/route.ts(62,17): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Type '({ name, isoDateTime, reason }: { name: string; isoDateTime: string; reason: string; }) => Promise<{ success: boolean; message: string; eventId: string | null | undefined; eventLink: string | null | undefined; } | { ...; }>' is not assignable to type 'undefined'.
+src/app/api/reception/route.ts(70,19): error TS2551: Property 'toDataStreamResponse' does not exist on type 'StreamTextResult<{ checkAvailability: Tool<{ date: string; }, { availableSlots: string[]; date: string; success: boolean; error?: undefined; } | { availableSlots: never[]; date: string; success: boolean; error: any; } | { ...; }>; bookAppointment: Tool<...>; }, Output<...>>'. Did you mean 'toTextStreamResponse'?
+src/app/page.tsx(601,68): error TS2304: Cannot find name 'handleDeleteAllSpam'.
+src/app/receptionist/page.tsx(12,23): error TS2339: Property 'input' does not exist on type 'UseChatHelpers<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/app/receptionist/page.tsx(12,30): error TS2339: Property 'handleInputChange' does not exist on type 'UseChatHelpers<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/app/receptionist/page.tsx(12,49): error TS2339: Property 'handleSubmit' does not exist on type 'UseChatHelpers<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/app/receptionist/page.tsx(12,63): error TS2339: Property 'isLoading' does not exist on type 'UseChatHelpers<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/app/receptionist/page.tsx(13,9): error TS2353: Object literal may only specify known properties, and 'api' does not exist in type 'UseChatOptions<UIMessage<unknown, UIDataTypes, UITools>>'.
+src/app/receptionist/page.tsx(93,54): error TS2339: Property 'content' does not exist on type 'UIMessage<unknown, UIDataTypes, UITools>'.
+src/app/receptionist/page.tsx(97,50): error TS2339: Property 'toolInvocations' does not exist on type 'UIMessage<unknown, UIDataTypes, UITools>'.
+src/app/receptionist/page.tsx(97,72): error TS7006: Parameter 'tool' implicitly has an 'any' type.
+src/app/receptionist/page.tsx(97,78): error TS7006: Parameter 'idx' implicitly has an 'any' type.

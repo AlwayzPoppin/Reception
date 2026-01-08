@@ -1,0 +1,14 @@
+appId: com.reception.app
+productName: Reception AI
+directories:
+  output: dist-electron
+files:
+  - electron/**/*
+  - package.json
+  # We don't need the Next.js build files since we load the URL remotely
+win:
+  target: nsis
+mac:
+  target: dmg
+linux:
+  target: AppImage

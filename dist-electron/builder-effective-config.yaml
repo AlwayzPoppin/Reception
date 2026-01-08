@@ -1,0 +1,16 @@
+directories:
+  output: dist-electron
+  buildResources: build
+appId: com.reception.app
+productName: Reception AI
+files:
+  - filter:
+      - electron/**/*
+      - package.json
+win:
+  target: nsis
+mac:
+  target: dmg
+linux:
+  target: AppImage
+electronVersion: 39.2.7
