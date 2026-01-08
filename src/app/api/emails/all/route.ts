@@ -19,6 +19,9 @@ export async function POST(req: Request) {
         console.log(`fetching aggregated emails for: ${emails.join(', ')}`);
 
         // Fetch cached emails for all provided accounts in one go
+        if (!supabase) {
+            return NextResponse.json([]);
+        }
         const { data, error } = await supabase
             .from('cached_emails')
             .select('*')

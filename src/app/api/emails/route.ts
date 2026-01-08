@@ -55,10 +55,12 @@ export async function GET() {
                         unsub_link: email.unsubLink
                     };
 
-                    // Save to cache (async)
-                    supabase.from('cached_emails').insert(emailData).then(({ error }) => {
-                        if (error) console.error('Cache save error:', error);
-                    });
+                    // Save to cache (async) - only if supabase is configured
+                    if (supabase) {
+                        supabase.from('cached_emails').insert(emailData).then(({ error }) => {
+                            if (error) console.error('Cache save error:', error);
+                        });
+                    }
 
                     return {
                         ...emailData,
