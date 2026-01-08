@@ -19,15 +19,19 @@ export async function GET() {
         const emailIds = rawEmails.map(e => e.id);
         const userEmail = session.user.email;
 
-        // 1. Check which emails are already in the cache
-        const { data: cachedEmails, error: dbError } = await supabase
-            .from('cached_emails')
-            .select('*')
-            .in('id', emailIds)
-            .eq('user_email', userEmail);
+        // 1. Check which emails are already in the cache (skip if supabase not configured)
+        let cachedEmails: any[] = [];
+        if (supabase) {
+            const { data, error: dbError } = await supabase
+                .from('cached_emails')
+                .select('*')
+                .in('id', emailIds)
+                .eq('user_email', userEmail);
 
-        if (dbError) {
-            console.error('Database fetch error:', dbError);
+            if (dbError) {
+                console.error('Database fetch error:', dbError);
+            }
+            cachedEmails = data || [];
         }
 
         const cachedIds = new Set(cachedEmails?.map(e => e.id) || []);
