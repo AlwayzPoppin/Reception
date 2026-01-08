@@ -124,7 +124,7 @@ const EmailDetail: React.FC<EmailDetailProps> = ({ email, onAction, onDraftReady
     if (!email) return;
     setLoadingAudio(true);
     try {
-      const textToRead = summary || (isTranslated ? translatedBody : email.body)?.substring(0, 300) || "";
+      const textToRead = (isTranslated ? translatedBody : email.body)?.substring(0, 300) || "";
       const base64Audio = await generateSpeech(textToRead);
       if (base64Audio) {
         alert("Reception: Audio brief is ready. (Simulated playback)");
