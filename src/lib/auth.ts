@@ -6,21 +6,23 @@ const YahooProvider = {
     id: "yahoo",
     name: "Yahoo",
     type: "oauth" as const,
-    wellKnown: "https://api.login.yahoo.com/.well-known/openid-configuration",
     authorization: {
+        url: "https://api.login.yahoo.com/oauth2/request_auth",
         params: {
             scope: "openid profile email",
             response_type: "code"
         }
     },
+    token: "https://api.login.yahoo.com/oauth2/get_token",
+    userinfo: "https://api.login.yahoo.com/openid/v1/userinfo",
     clientId: process.env.YAHOO_CLIENT_ID,
     clientSecret: process.env.YAHOO_CLIENT_SECRET,
-    idToken: true,
-    checks: ["state"] as any, // Removed PKCE - Yahoo may not fully support it
+    idToken: false, // Disable idToken, use userinfo endpoint instead
+    checks: ["state"] as any,
     profile(profile: any) {
         return {
-            id: profile.sub,
-            name: profile.name,
+            id: profile.sub || profile.guid,
+            name: profile.name || profile.nickname,
             email: profile.email,
             image: profile.picture
         }
