@@ -24,6 +24,9 @@ export async function GET() {
     try {
         const userEmail = session.user.email;
 
+        if (!supabase) {
+            return NextResponse.json([]);
+        }
         const { data: cachedEmails, error } = await supabase
             .from('cached_emails')
             .select('*')
