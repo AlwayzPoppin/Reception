@@ -1,6 +1,5 @@
 import { openai } from '@ai-sdk/openai';
 import { generateText } from 'ai';
-import { getToneContextForPrompt } from './tonePreferences';
 
 // AI Service for Interception & Drafting
 
