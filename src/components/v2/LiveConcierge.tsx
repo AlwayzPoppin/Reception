@@ -59,8 +59,9 @@ const LiveConcierge: React.FC<LiveConciergeProps> = ({ emails, onAddWatcher }) =
             processor.connect(inputCtx.destination);
           },
           onmessage: async (msg) => {
-            const audioData = msg.serverContent?.modelTurn?.parts[0]?.inlineData?.data;
-            const textData = msg.serverContent?.modelTurn?.parts[0]?.text;
+            const parts = msg.serverContent?.modelTurn?.parts;
+            const audioData = parts?.[0]?.inlineData?.data;
+            const textData = parts?.[0]?.text;
 
             if (textData) {
               // Check for watcher commands in text (internal protocol)
