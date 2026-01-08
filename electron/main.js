@@ -4,7 +4,7 @@ const path = require('path');
 const IS_DEV = process.argv.includes('--dev');
 const APP_URL = IS_DEV
     ? 'http://localhost:3000'
-    : 'https://reception-1h728qey2-michael-watkins-projects-6087af1b.vercel.app';
+    : 'https://reception-smoky.vercel.app';
 
 let mainWindow;
 let tray;
