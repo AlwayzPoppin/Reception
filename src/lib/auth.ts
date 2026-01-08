@@ -16,7 +16,7 @@ const YahooProvider = {
     clientId: process.env.YAHOO_CLIENT_ID,
     clientSecret: process.env.YAHOO_CLIENT_SECRET,
     idToken: true,
-    checks: ["pkce", "state"] as any,
+    checks: ["state"] as any, // Removed PKCE - Yahoo may not fully support it
     profile(profile: any) {
         return {
             id: profile.sub,
