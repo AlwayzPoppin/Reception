@@ -1,0 +1,21 @@
+environmentVariables:
+  - variable: NEXT_PUBLIC_SUPABASE_URL
+    value: "https://ykifcdvvsgjclrcehnqd.supabase.co"
+  - variable: GOOGLE_CLIENT_ID
+    value: "1019240820278-dtr5fq7bcvk27nciit1nhla99td95lf3.apps.googleusercontent.com"
+  - variable: YAHOO_CLIENT_ID
+    value: "dj0yJmk9azFOdjFqUUl6TmZCJmQ9WVdrOVZGbHVObTlPYmpnbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PWY3"
+
+secrets:
+  - variable: GOOGLE_CLIENT_SECRET
+    secret: google-client-secret
+  - variable: NEXTAUTH_SECRET
+    secret: nextauth-secret
+  - variable: OPENAI_API_KEY
+    secret: openai-api-key
+  - variable: NEXT_PUBLIC_SUPABASE_ANON_KEY
+    secret: supabase-anon-key
+  - variable: NEXT_PUBLIC_GOOGLE_AI_API_KEY
+    secret: google-ai-api-key
+  - variable: YAHOO_CLIENT_SECRET
+    secret: yahoo-client-secret
