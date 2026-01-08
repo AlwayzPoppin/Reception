@@ -26,7 +26,22 @@ const getAi = (): GoogleGenAI | null => {
 
 const getModel = (modelName: string = "gemini-1.5-flash") => {
   const ai = getAi();
-  return ai ? ai.getGenerativeModel({ model: modelName }) : null;
+  if (!ai) return null;
+
+  // Return a wrapper that matches expected interface
+  return {
+    generateContent: async (options: any) => {
+      const response = await ai.models.generateContent({
+        model: modelName,
+        ...options
+      });
+      return {
+        text: response.text,
+        response: { text: () => response.text },
+        candidates: response.candidates
+      };
+    }
+  };
 };
 
 export const generateDraftImage = async (prompt: string): Promise<string> => {
