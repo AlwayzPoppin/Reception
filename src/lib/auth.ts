@@ -13,11 +13,29 @@ const YahooProvider = {
             response_type: "code"
         }
     },
-    token: "https://api.login.yahoo.com/oauth2/get_token",
+    token: {
+        url: "https://api.login.yahoo.com/oauth2/get_token",
+        async request({ client, params, checks, provider }: any) {
+            const response = await fetch("https://api.login.yahoo.com/oauth2/get_token", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Authorization": `Basic ${Buffer.from(`${provider.clientId}:${provider.clientSecret}`).toString("base64")}`
+                },
+                body: new URLSearchParams({
+                    grant_type: "authorization_code",
+                    code: params.code as string,
+                    redirect_uri: params.redirect_uri as string,
+                }).toString()
+            });
+            const tokens = await response.json();
+            return { tokens };
+        }
+    },
     userinfo: "https://api.login.yahoo.com/openid/v1/userinfo",
     clientId: process.env.YAHOO_CLIENT_ID,
     clientSecret: process.env.YAHOO_CLIENT_SECRET,
-    idToken: false, // Disable idToken, use userinfo endpoint instead
+    idToken: false,
     checks: ["state"] as any,
     profile(profile: any) {
         return {
