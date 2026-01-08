@@ -1,6 +1,6 @@
 
 import { GoogleGenAI, Type, Modality } from "@google/genai";
-import { Email, AIClassification, MaintenanceAction, Category, CustomCategory, SignatureStyle, ToneType } from "../types/v2/types";
+import { Email, AIClassification, MaintenanceAction, Category, CustomCategory, SignatureStyle, ToneType } from "../../types/v2/types";
 
 // Cache the AI instance to avoid repeated initialization attempts
 let cachedAi: GoogleGenAI | null = null;
@@ -16,7 +16,7 @@ const getAi = (): GoogleGenAI | null => {
     return null;
   }
   try {
-    cachedAi = new GoogleGenAI(apiKey);
+    cachedAi = new GoogleGenAI({ apiKey });
     return cachedAi;
   } catch (e) {
     // Silently fail - this is expected if the key is invalid
