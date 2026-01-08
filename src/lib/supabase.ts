@@ -1,12 +1,17 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-// Log configuration status (non-sensitive) for debugging
-if (!supabaseUrl || !supabaseAnonKey) {
+export const isSupabaseConfigured = !!(supabaseUrl && supabaseAnonKey);
+
+// Only create client if configured, otherwise return null
+let supabaseClient: SupabaseClient | null = null;
+
+if (isSupabaseConfigured) {
+    supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
+} else {
     console.warn('⚠️ Supabase not configured: URL or ANON_KEY missing in environment.');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
-export const isSupabaseConfigured = !!(supabaseUrl && supabaseAnonKey);
+export const supabase = supabaseClient;
