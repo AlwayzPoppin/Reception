@@ -28,7 +28,7 @@ const LiveConcierge: React.FC<LiveConciergeProps> = ({ emails, onAddWatcher }) =
     }
 
     setIsConnecting(true);
-    const ai = new GoogleGenAI(apiKey);
+    const ai = new GoogleGenAI({ apiKey });
 
     // Setup audio
     if (!audioContextRef.current) {
