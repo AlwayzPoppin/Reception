@@ -89,7 +89,7 @@ export const generateSmartReplies = async (emailBody: string): Promise<string[]>
       }
     }
   });
-  return JSON.parse(response.text.trim());
+  return JSON.parse((response.text || '[]').trim());
 };
 
 export const classifyEmail = async (
@@ -137,7 +137,7 @@ export const classifyEmail = async (
     },
   });
 
-  return JSON.parse(response.text.trim());
+  return JSON.parse((response.text || '{}').trim());
 };
 
 export const translateText = async (text: string, targetLanguage: string = "English"): Promise<string> => {
@@ -146,7 +146,7 @@ export const translateText = async (text: string, targetLanguage: string = "Engl
   const response = await model.generateContent({
     contents: [{ role: "user", parts: [{ text: `Translate the following email content into ${targetLanguage}. Maintain the formatting and tone: \n\n${text}` }] }],
   });
-  return response.response.text();
+  return response.response?.text() || text;
 };
 
 export const refineTone = async (text: string, tone: ToneType): Promise<string> => {
@@ -155,7 +155,7 @@ export const refineTone = async (text: string, tone: ToneType): Promise<string> 
   const response = await model.generateContent({
     contents: [{ role: "user", parts: [{ text: `Rewrite the following email draft to be more ${tone.toLowerCase()}. Draft: "${text}"` }] }],
   });
-  return response.response.text();
+  return response.response?.text() || text;
 };
 
 export const researchAndDraft = async (topic: string): Promise<string> => {
@@ -165,7 +165,7 @@ export const researchAndDraft = async (topic: string): Promise<string> => {
     contents: [{ role: "user", parts: [{ text: `Research "${topic}" and write a professional draft.` }] }],
     // config: { tools: [{ googleSearch: {} }] } // Removed tools for simplicity/compatibility for now
   });
-  return response.response.text();
+  return response.response?.text() || `Draft for ${topic}: AI research unavailable.`;
 };
 
 export const extractTasks = async (body: string): Promise<string[]> => {
@@ -178,7 +178,7 @@ export const extractTasks = async (body: string): Promise<string[]> => {
       responseSchema: { type: Type.ARRAY, items: { type: Type.STRING } }
     }
   });
-  return JSON.parse(response.response.text().trim());
+  return JSON.parse((response.response?.text() || '[]').trim());
 };
 
 export const getMapsContext = async (text: string): Promise<string> => {
@@ -188,7 +188,7 @@ export const getMapsContext = async (text: string): Promise<string> => {
     contents: [{ role: "user", parts: [{ text: `Find the location status for: ${text}` }] }],
     // config: { tools: [{ googleMaps: {} }] } // Only if available for this model/tier
   });
-  return response.response.text();
+  return response.response?.text() || 'Location research unavailable.';
 };
 
 export const summarizeEmailLong = async (body: string): Promise<string> => {
@@ -197,7 +197,7 @@ export const summarizeEmailLong = async (body: string): Promise<string> => {
   const response = await model.generateContent({
     contents: [{ role: "user", parts: [{ text: `Summarize this email in bullet points: \n\n${body}` }] }],
   });
-  return response.response.text();
+  return response.response?.text() || body.substring(0, 100) + '...';
 };
 
 export const generateSpeech = async (text: string): Promise<string> => {
@@ -232,7 +232,7 @@ export const performMaintenanceAudit = async (emails: Email[]): Promise<Maintena
       }
     }
   });
-  return JSON.parse(response.response.text().trim());
+  return JSON.parse((response.response?.text() || '[]').trim());
 };
 
 export const generateSignatures = async (profile: { name: string; role: string; company: string; extra?: string }): Promise<{ style: SignatureStyle; text: string }[]> => {
@@ -252,5 +252,5 @@ export const generateSignatures = async (profile: { name: string; role: string; 
       }
     }
   });
-  return JSON.parse(response.response.text().trim());
+  return JSON.parse((response.response?.text() || '[]').trim());
 };
