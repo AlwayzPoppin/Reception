@@ -48,6 +48,7 @@ const YahooProvider = {
 }
 
 export const authOptions: NextAuthOptions = {
+    secret: process.env.NEXTAUTH_SECRET,
     debug: true,
     providers: [
         GoogleProvider({
