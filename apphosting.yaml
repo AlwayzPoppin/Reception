@@ -4,7 +4,7 @@ environmentVariables:
   - variable: NEXT_PUBLIC_SUPABASE_URL
     value: "https://ykifcdvvsgjclrcehnqd.supabase.co"
   - variable: GOOGLE_CLIENT_ID
-    value: "1019240820278-dtr5fq7bcvk27nciit1nhla99td95lf3.apps.googleusercontent.com"
+    value: "117122635706-ddt72lecqjqlb2ictism0uolr89d6iun.apps.googleusercontent.com"
   - variable: YAHOO_CLIENT_ID
     value: "dj0yJmk9azFOdjFqUUl6TmZCJmQ9WVdrOVZGbHVObTlPYmpnbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PWY3"
 
