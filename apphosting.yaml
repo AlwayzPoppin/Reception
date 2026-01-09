@@ -1,4 +1,6 @@
 environmentVariables:
+  - variable: NEXTAUTH_URL
+    value: "https://reception-repo--gen-lang-client-0178966073.us-central1.hosted.app"
   - variable: NEXT_PUBLIC_SUPABASE_URL
     value: "https://ykifcdvvsgjclrcehnqd.supabase.co"
   - variable: GOOGLE_CLIENT_ID
