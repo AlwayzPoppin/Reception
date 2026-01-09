@@ -47,8 +47,10 @@ const YahooProvider = {
     }
 }
 
+console.log("DEBUG: NEXTAUTH_SECRET present:", !!process.env.NEXTAUTH_SECRET);
+
 export const authOptions: NextAuthOptions = {
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET || "temp-debug-secret-7ec6d",
     debug: true,
     providers: [
         GoogleProvider({
