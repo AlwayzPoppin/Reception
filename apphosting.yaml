@@ -6,7 +6,7 @@ environmentVariables:
   - variable: GOOGLE_CLIENT_ID
     value: "117122635706-ddt72lecqjqlb2ictism0uolr89d6iun.apps.googleusercontent.com"
   - variable: YAHOO_CLIENT_ID
-    value: "dj0yJmk9azFOdjFqUUl6TmZCJmQ9WVdrOVZGbHVObTlPYmpnbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PWY3"
+    value: "dj0yJmk9ZINLN3pHdFlNbVV1UmJQWldvOVNGbHhaa3g0YVBRPTYBYW5zZ30YTBvWNHhzInY0ZJnN9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PWY3"
 
 secrets:
   - variable: GOOGLE_CLIENT_SECRET
